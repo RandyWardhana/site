@@ -1,17 +1,32 @@
 import React from 'react'
 
 import Navbar from '../components/Navbar'
-import PageTitle from '../components/PageTitle'
+import Header from '../components/Header'
+import Project from '../components/Project'
+import Skills from '../components/Skills'
+import Contact from '../components/Contact'
+import Footer from '../components/Footer'
 import Layout from '../layout'
 
-const Index = () => (
-  <Layout>
-    <Navbar currentPage={'HOME'} />
-    <PageTitle>
-      Hello!<br />
-      I'm Randy Wardhana, a frontend engineer and also a weeb
-    </PageTitle>
-  </Layout>
-)
+import useWindowSize from '../utils/resizeWindowSize'
+
+const Index = (props) => {
+  const size = useWindowSize()
+
+  return (
+    <>
+      <Navbar currentPosition={'HOME'} size={size} theme={props.theme} toggle={props.toggle} />
+      <Layout>
+        <div style={{ margin: '60px auto 0', padding: size.width <= 768 ? '0 32px' : 0 }}>
+          <Header size={size} theme={props.theme} toggle={props.toggle} />
+          <Project size={size} />
+          <Skills />
+          <Contact size={size} theme={props.theme} />
+          <Footer size={size} theme={props.theme} />
+        </div>
+      </Layout>
+    </>
+  )
+}
 
 export default Index
