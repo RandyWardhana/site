@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "code": "next -p 4200",
     "dev": "next dev",
     "build": "next build",
     "start": "next start"
@@ -11,6 +12,7 @@
     "next": "9.5.1",
     "react": "16.13.1",
     "react-dom": "16.13.1",
+    "react-multi-carousel": "^2.5.5",
     "styled-components": "^5.1.1"
   }
 }
