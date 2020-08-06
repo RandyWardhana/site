@@ -1,0 +1,20 @@
+.custom-dot-list-style {
+  padding-top: 16px !important;
+  position: relative !important;
+  transition: all .15s ease-in-out;
+}
+
+.custom-dot {
+  background: #888A8E;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin: 0 4px;
+  padding: 8px;
+  outline: none;
+  transition: all .15s ease-in-out;
+}
+
+.custom-dot-active {
+  background: #2F3136;
+}
