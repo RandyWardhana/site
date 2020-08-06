@@ -1,33 +1,25 @@
 import styled from 'styled-components'
 
 const DefaultLayout = styled.div`
-  max-width: 640px;
+  padding: 32px 0;
+  margin-left: auto;
+  margin-right: auto;
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  margin: 96px auto 96px 256px;
-  box-sizing: border-box;
-  @media (max-width: 1152px) {
-    margin: 96px auto;
+
+  @media (max-width: 576px) {
+    max-width: 540px;
   }
-  @media (max-width: 832px) {
-    margin: 96px;
+
+  @media (min-width: 768px) {
+    max-width: 720px;
   }
-  @media (max-width: 768px) {
-    margin: 0px;
-    padding: 96px 48px;
+
+  @media (min-width: 992px) {
+    max-width: 960px;
   }
-  @media (max-width: 480px) {
-    padding: 96px 32px;
-  }
-  & > * {
-    margin: 16px 0px;
-    &:first-child {
-      margin-top: 0px;
-    }
-    &:last-child {
-      margin-bottom: 0px;
-    }
+
+  @media (min-width: 1200px) {
+    max-width: 1140px;
   }
 `
 
