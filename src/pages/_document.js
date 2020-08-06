@@ -32,11 +32,8 @@ export default class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
-          <meta charSet="UTF-8" />
-          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-          <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
-          <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,100;0,300;0,400;0,700;1,500&display=swap" rel="stylesheet" />
-          <link rel="shortcut icon" href="/icon.png" />
+          <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet" />
+          <link rel="shortcut icon" href="/img/icon.png" />
         </Head>
         <body>
           <Main />
