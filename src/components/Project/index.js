@@ -7,6 +7,7 @@ const ContainerHeader = styled.div`
   display: flex;
   justify-content: space-between;
   padding: 16px 0;
+  transition: ${({ theme }) => theme.transition}; 
 `
 
 const TitleHeader = styled.h1`
@@ -56,9 +57,8 @@ const Content = styled.div`
 `
 
 const ImageContainer = styled.div`
-  border: 1px solid ${({ theme }) => theme.secondary};
   border-radius: 8px;
-  height: 160px;
+  height: 176px;
   width: 100%;
 `
 
@@ -94,32 +94,9 @@ const Description = styled(Title)`
   margin: 0;
 `
 
-const data = [
-  {
-    image: '/img/avatar.jpeg',
-    title: 'RegoPantes',
-    description: 'RegoPantes: Solusi perdagangan online produk pertanian langsung dari petani ke konsumen dengan harga yang pantas untuk semua pihak #MembeliItuMembantu',
-  },
-  {
-    image: '/img/avatar.jpeg',
-    title: 'RegoPantes',
-    description: 'RegoPantes: Solusi perdagangan online produk pertanian langsung dari petani ke konsumen dengan harga yang pantas untuk semua pihak #MembeliItuMembantu',
-  },
-  {
-    image: '/img/avatar.jpeg',
-    title: 'RegoPantes',
-    description: 'RegoPantes: Solusi perdagangan online produk pertanian langsung dari petani ke konsumen dengan harga yang pantas untuk semua pihak #MembeliItuMembantu',
-  },
-  {
-    image: '/img/avatar.jpeg',
-    title: 'RegoPantes',
-    description: 'RegoPantes: Solusi perdagangan online produk pertanian langsung dari petani ke konsumen dengan harga yang pantas untuk semua pihak #MembeliItuMembantu',
-  },
-]
-
-const Project = ({ size }) => (
+const Project = ({ data, size }) => (
   <>
-    <ContainerHeader>
+    <ContainerHeader id="project">
       <TitleHeader>PROJECT</TitleHeader>
       <SeeMore
         size={size}
@@ -133,7 +110,7 @@ const Project = ({ size }) => (
     <ContainerContent>
       {data.map((item, index) => {
         return (
-          <Content key={index} size={size} index={index}>
+          <Content key={index} size={size} index={index} onClick={() => window.open(item.url)}>
             <ImageContainer>
               <Image alt={item.title} src={item.image} />
             </ImageContainer>
