@@ -15,7 +15,7 @@ const ContainerHeader = styled.div`
 `
 
 const TitleHeader = styled.p`
-  alignSelf: center;
+  align-items: center;
   color: ${({ theme }) => theme.primary};
   display: flex;
   font-weight: 300;
