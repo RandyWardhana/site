@@ -29,7 +29,7 @@ const Global = createGlobalStyle`
 `
 
 function App({ Component, pageProps }) {
-  const [theme, themeToggler, mountedComponent] = useDarkMode()
+  const [theme, themeToggler] = useDarkMode()
 
   const themeMode = theme === 'light' ? lightTheme : darkTheme
 
@@ -40,50 +40,45 @@ function App({ Component, pageProps }) {
     site: 'https://site-randy.vercel.app'
   }
 
-  const renderHead = () => (
-    <Head>
-      <meta charSet='UTF-8' />
-      <meta name="next-head-count" />
-      <meta name='viewport' content='width=device-width, initial-scale=1.0' />
-      <meta name='description' content={og.description} />
-      <meta name="theme-color" content='#2F3136' />
-
-      <meta property="og:locale" content="en_US" />
-      <meta property='og:title' content={og.name} />
-      <meta property='og:type' content='website' />
-      <meta property='og:url' content={og.site} />
-      <meta property='og:image' content={og.image} />
-      <meta property='og:image:secure_url' content={og.image} />
-      <meta property='og:image:type' content='image/png' />
-      <meta property='og:image:width' content='500' />
-      <meta property='og:image:height' content='500' />
-      <meta property='og:image:alt' content={og.name} />
-      <meta property='og:description' content={og.description} />
-      <meta property='og:site_name' content={og.name} />
-      <meta property="og:type" content="website" />
-
-      <meta name="twitter:title" content={og.title} />
-      <meta name="twitter:site" content="@randywardhana3" />
-      <meta name="twitter:site:id" content="@randywardhana3 " />
-      <meta name="twitter:creator" content="@randywardhana3" />
-      <meta name="twitter:description" content={og.description} />
-      <meta name="twitter:image" content={og.image} />
-
-      <meta name="branch:deeplink:$desktop_url" content={og.site} />
-      <meta name="branch:deeplink:$ios_deeplink_path" content={og.name} />
-      <meta name="branch:deeplink:$android_deeplink_path" content={og.name} />
-
-      <link rel='stylesheet' href='/css/styles.css' />
-      <title>Randy Wardhana</title>
-    </Head>
-  )
-
-  if (!mountedComponent) return renderHead()
   return (
     <ThemeProvider theme={themeMode}>
       <>
         <Global />
-        {renderHead()}
+        <Head>
+          <meta charSet='UTF-8' />
+          <meta name="next-head-count" />
+          <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+          <meta name='description' content={og.description} />
+          <meta name="theme-color" content='#2F3136' />
+
+          <meta property="og:locale" content="en_US" />
+          <meta property='og:title' content={og.name} />
+          <meta property='og:type' content='website' />
+          <meta property='og:url' content={og.site} />
+          <meta property='og:image' content={og.image} />
+          <meta property='og:image:secure_url' content={og.image} />
+          <meta property='og:image:type' content='image/png' />
+          <meta property='og:image:width' content='500' />
+          <meta property='og:image:height' content='500' />
+          <meta property='og:image:alt' content={og.name} />
+          <meta property='og:description' content={og.description} />
+          <meta property='og:site_name' content={og.name} />
+          <meta property="og:type" content="website" />
+
+          <meta name="twitter:title" content={og.title} />
+          <meta name="twitter:site" content="@randywardhana3" />
+          <meta name="twitter:site:id" content="@randywardhana3 " />
+          <meta name="twitter:creator" content="@randywardhana3" />
+          <meta name="twitter:description" content={og.description} />
+          <meta name="twitter:image" content={og.image} />
+
+          <meta name="branch:deeplink:$desktop_url" content={og.site} />
+          <meta name="branch:deeplink:$ios_deeplink_path" content={og.name} />
+          <meta name="branch:deeplink:$android_deeplink_path" content={og.name} />
+
+          <link rel='stylesheet' href='/css/styles.css' />
+          <title>Randy Wardhana</title>
+        </Head>
         <Component {...pageProps} theme={themeMode} toggle={themeToggler} />
       </>
     </ThemeProvider>
