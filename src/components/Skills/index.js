@@ -2,11 +2,14 @@ import React from 'react'
 import styled, { css } from 'styled-components'
 import Carousel from 'react-multi-carousel'
 
+import { SkillsData } from '../../utils/DummyData'
+
 const ContainerHeader = styled.div`
   align-items: center;
   display: flex;
   margin: 16px 0;
   padding: 16px 0;
+  transition: ${({ theme }) => theme.transition}; 
   `
 
 const TitleHeader = styled.h1`
@@ -68,73 +71,6 @@ const responsive = {
   }
 }
 
-const data = [
-  {
-    image: '/img/reacc.png',
-    caption: 'React'
-  },
-  {
-    image: '/img/reacc.png',
-    caption: 'React'
-  },
-  {
-    image: '/img/reacc.png',
-    caption: 'React'
-  },
-  {
-    image: '/img/reacc.png',
-    caption: 'React'
-  },
-  {
-    image: '/img/reacc.png',
-    caption: 'React'
-  },
-  {
-    image: '/img/reacc.png',
-    caption: 'React'
-  },
-  {
-    image: '/img/reacc.png',
-    caption: 'React'
-  },
-  {
-    image: '/img/reacc.png',
-    caption: 'React'
-  },
-  {
-    image: '/img/reacc.png',
-    caption: 'React'
-  },
-  {
-    image: '/img/reacc.png',
-    caption: 'React'
-  },
-  {
-    image: '/img/reacc.png',
-    caption: 'React'
-  },
-  {
-    image: '/img/reacc.png',
-    caption: 'React'
-  },
-  {
-    image: '/img/reacc.png',
-    caption: 'React'
-  },
-  {
-    image: '/img/reacc.png',
-    caption: 'React'
-  },
-  {
-    image: '/img/reacc.png',
-    caption: 'React'
-  },
-  {
-    image: '/img/reacc.png',
-    caption: 'React'
-  },
-]
-
 const CustomDot = ({ onClick, active }) => (
   <CustomDotItem
     active={active}
@@ -144,13 +80,13 @@ const CustomDot = ({ onClick, active }) => (
     }} />
 )
 
-const Skills = () => (
+const Skills = ({ theme, data }) => (
   <>
-    <ContainerHeader>
+    <ContainerHeader id="skills">
       <TitleHeader>SKILLS</TitleHeader>
     </ContainerHeader>
     <Carousel
-      swipeable={false}
+      swipeable={true}
       draggable={true}
       showDots={true}
       responsive={responsive}
@@ -164,9 +100,9 @@ const Skills = () => (
       itemClass="carousel-item-padding-40-px"
       customDot={<CustomDot />}
     >
-      {data.map((item, index) => (
+      {SkillsData(theme.primary, theme.background).map((item, index) => (
         <SwiperContainer key={index}>
-          <Img alt={item.caption} src={item.image} />
+          {item.icon}
           <Skill>{item.caption}</Skill>
         </SwiperContainer>
       ))}
