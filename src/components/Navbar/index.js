@@ -92,11 +92,14 @@ const Modal = styled.div`
 const Navbar = ({ currentPosition, size, theme, toggle }) => {
   const [open, setOpen] = React.useState(false)
 
+  React.useEffect(() => {
+    document.body.style.overflowY = open ? 'hidden' : 'auto'
+  }, [open])
+
   const handleMenu = () => {
     setOpen(!open)
   }
 
-  document.body.style.overflowY = open ? 'hidden' : 'auto'
 
   return (
     <>

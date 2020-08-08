@@ -29,7 +29,7 @@ const Global = createGlobalStyle`
 `
 
 function App({ Component, pageProps }) {
-  const [theme, themeToggler, mountedComponent] = useDarkMode()
+  const [theme, themeToggler ] = useDarkMode()
 
   const themeMode = theme === 'light' ? lightTheme : darkTheme
 
@@ -40,7 +40,6 @@ function App({ Component, pageProps }) {
     site: 'https://site-randy.vercel.app'
   }
 
-  if (!mountedComponent) return <div />
   return (
     <ThemeProvider theme={themeMode}>
       <>
