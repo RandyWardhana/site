@@ -4,6 +4,7 @@ import styled, { css } from 'styled-components'
 import { Download } from '../Svg'
 
 import Greetings from '../../utils/greetings'
+import { storeImage } from '../../utils/FirebaseRequest';
 
 const Container = styled.div`
   align-items: center;
@@ -59,6 +60,7 @@ const DownloadCV = styled.button`
   display: flex;
   outline: none;
   padding: 8px 16px;
+  transition: ${({ theme }) => theme.transition};
 
   ${(props) => props.size.width < 768 && css`
     margin: 0 auto;
@@ -88,28 +90,35 @@ const Img = styled.img`
   width: 100%;
 `
 
-const Header = ({ size, theme, toggle }) => (
-  <Container size={size}>
-    <ProfileContainer size={size}>
-      {/* <Greeting>{Greetings().id.toUpperCase()}</Greeting> */}
-      <Greeting>{Greetings().en.toUpperCase()}</Greeting>
-      {/* <Greeting>{Greetings().jp.toUpperCase()}</Greeting> */}
-      <Name>
-        I'm
-      <FullName size={size}>Randy Wardhana</FullName>
-      </Name>
-      <Profession>Frontend Engineer</Profession>
-      <DownloadCV size={size} onClick={toggle}>
-        <Download fill={theme.primary} />
-        <DownloadText>Download CV</DownloadText>
-      </DownloadCV>
-    </ProfileContainer>
-    {size.width >= 768 &&
-      <ImageContainer>
-        <Img alt='Randy Wardhana' src='/img/bandy.png' />
-      </ImageContainer>
-    }
-  </Container>
-)
+const Header = ({ data, size, theme }) => {
+  // const handleStoreImage = async (e) => {
+  //   await storeImage(e.target.files[0])
+  // }
+
+  return (
+    <Container size={size}>
+      <ProfileContainer size={size}>
+        {/* <Greeting>{Greetings().id.toUpperCase()}</Greeting> */}
+        <Greeting>{Greetings().en.toUpperCase()}</Greeting>
+        {/* <Greeting>{Greetings().jp.toUpperCase()}</Greeting> */}
+        <Name>
+          I'm
+      <FullName size={size}>{data.name}</FullName>
+        </Name>
+        <Profession>{data.role}</Profession>
+        <DownloadCV size={size} onClick={() => window.open(data.cv)}>
+          <Download fill={theme.primary} />
+          <DownloadText>Download CV</DownloadText>
+        </DownloadCV>
+      </ProfileContainer>
+      {size.width >= 768 &&
+        <ImageContainer>
+          <Img alt={data.name} src={data.image} />
+        </ImageContainer>
+      }
+      {/* <input type='file' onChange={handleStoreImage} /> */}
+    </Container>
+  )
+}
 
 export default Header
