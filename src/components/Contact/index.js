@@ -8,7 +8,8 @@ const ContainerHeader = styled.div`
   display: flex;
   margin: 16px 0;
   padding: 16px 0;
-  `
+  transition: ${({ theme }) => theme.transition}; 
+`
 
 const TitleHeader = styled.h1`
   color: ${({ theme }) => theme.primary};
@@ -38,6 +39,16 @@ const ContainerSocialMedia = styled(ContainerForm)`
   `}
 `
 
+const FormContent = styled.div`
+  margin-bottom: 16px;
+
+  label {
+    color: ${({ theme }) => theme.primary};
+    font-size: 14px;
+    font-weight: 300;
+  }
+`
+
 const Subject = styled.input`
   background: ${({ theme }) => theme.primary};
   border: none;
@@ -61,9 +72,12 @@ const Content = styled.textarea`
   color: ${({ theme }) => theme.background};
   font-family: ${({ theme }) => theme.font};
   margin: 8px 0;
+  max-height: 160px;
+  max-width: 95%;
+  min-height: 72px;
+  min-width: 95%;
   outline: none;
   padding: 12px 8px;
-  width: 95%;
 
   &::placeholder {
     color: ${({ theme }) => theme.background};
@@ -99,7 +113,7 @@ const Url = styled.a`
 
 const SocialMediaContainer = styled.div`
   display: flex;
-  margin-bottom: 16px;
+  margin-bottom: 24px;
   margin-left: 32px;
 `
 
@@ -183,7 +197,7 @@ const Contact = ({ size, theme }) => {
       <MobileSocialMedia>
         {data.map((item, index) => {
           return (
-            <Url mobile={true} href={item.url} target="_blank" rel="noopener noreferer">
+            <Url mobile={true} key={index} href={item.url} target="_blank" rel="noopener noreferer">
               {item.icon}
             </Url>
           )
@@ -198,23 +212,33 @@ const Contact = ({ size, theme }) => {
 
   return (
     <>
-      <ContainerHeader>
+      <ContainerHeader id="contact">
         <TitleHeader>CONTACT</TitleHeader>
       </ContainerHeader>
       <ContainerContent>
         <ContainerForm size={size}>
-          <Subject
-            onChange={(e) => setSubject(e.target.value)}
-            placeholder='Subject (Optional)'
-            type='text'
-            value={subject}
-          />
-          <Content
-            onChange={(e) => setTextArea(e.target.value)}
-            placeholder='Message'
-            rows={4}
-            value={textArea}
-          />
+          <FormContent>
+            <label htmlFor='subject'>Subject</label>
+            <Subject
+              id='subject'
+              name='subject'
+              onChange={(e) => setSubject(e.target.value)}
+              placeholder='Subject (Optional)'
+              type='text'
+              value={subject}
+            />
+          </FormContent>
+          <FormContent>
+            <label htmlFor='message'>Message</label>
+            <Content
+              id='message'
+              name='message'
+              onChange={(e) => setTextArea(e.target.value)}
+              placeholder='Message'
+              rows={4}
+              value={textArea}
+            />
+          </FormContent>
           <Submit>
             {/* <a href="mailto:randywardhana37@gmail.com?body='hai'"> */}
             <a onClick={() => sendData()}>
