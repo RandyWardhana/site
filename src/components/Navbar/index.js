@@ -2,7 +2,7 @@ import React from 'react'
 import styled, { css } from 'styled-components'
 import Link from 'next/link'
 
-import { Menu } from '../Svg'
+import { Menu, Sun, Moon, Close } from '../Svg'
 
 const Container = styled.div`
   background: ${({ theme }) => theme.background};
@@ -63,57 +63,110 @@ const StyledLink = styled.p`
       color: ${({ theme }) => theme.primary};
     }
   }
-  ${(props) => props.lastChild && css`
-    a {
-      margin-right: 0
-    }
-  `}
   ${(props) => props.active && css`
     a {
       color: ${({ theme }) => theme.primary};
       font-weight: 500;
     }
   `}
+  ${(props) => props.mobile && css`
+    padding: 12px 16px;
+  `}
 `
 
-const Navbar = ({ currentPosition, size, theme }) => (
-  <>
-    <nav>
-      <Container>
-        <Content>
-          <MenuContainer>
-            <StyledLink active={currentPosition === 'HOME'} lastChild={false}>
-              <Link href="/" passHref>
-                <a style={{ color: theme.primary, fontWeight: '700' }}>RANDY</a>
-              </Link>
-            </StyledLink>
-          </MenuContainer>
-          {size.width <= 576 && (
-            <Menu space={16} fill={theme.primary} />
-          )}
-          {size.width > 576 && (
-            <div style={{ display: 'flex' }}>
-              <StyledLink active={currentPosition === 'PROJECT'} lastChild={false}>
-                <Link href="/#project" passHref>
-                  <a>Project</a>
+const Modal = styled.div`
+  background: ${({ theme }) => theme.primary};
+  position: fixed;
+  transition: ${({ theme }) => theme.transition};
+  width: 100%;
+  z-index: 1000;
+
+  span {
+    align-items: center;
+    cursor: pointer;
+    display: flex;
+    padding: 16px;
+  }
+`
+
+const Navbar = ({ currentPosition, size, theme, toggle }) => {
+  const [open, setOpen] = React.useState(false)
+
+  const handleMenu = () => {
+    setOpen(!open)
+  }
+
+  document.body.style.overflowY = open ? 'hidden' : 'auto'
+
+  return (
+    <>
+      <nav>
+        <Container>
+          <Content>
+            <MenuContainer>
+              <StyledLink active={currentPosition === 'HOME'} lastChild={false}>
+                <Link href="/" passHref>
+                  <a style={{ color: theme.primary, fontWeight: '700' }}>RANDY</a>
                 </Link>
               </StyledLink>
-              <StyledLink active={currentPosition === 'SKILLS'} lastChild={false}>
-                <Link href="/#skills" passHref>
-                  <a>Skills</a>
-                </Link>
-              </StyledLink>
-              <StyledLink active={currentPosition === 'CONTACT'} lastChild={true}>
-                <Link href="/#contact" passHref>
-                  <a>Contact</a>
-                </Link>
-              </StyledLink>
-            </div>
-          )}
-        </Content>
-      </Container>
-    </nav>
-  </>
-)
+            </MenuContainer>
+            {size.width <= 576 && (
+              <span style={{ transition: theme.transition }} onClick={() => handleMenu()}>
+                <Menu space={16} size={20} fill={theme.primary} />
+              </span>
+            )}
+            {size.width > 576 && (
+              <div style={{ display: 'flex' }}>
+                <StyledLink>
+                  <Link href="/#project" passHref>
+                    <a>Project</a>
+                  </Link>
+                </StyledLink>
+                <StyledLink>
+                  <Link href="/#skills" passHref>
+                    <a>Skills</a>
+                  </Link>
+                </StyledLink>
+                <StyledLink>
+                  <Link href="/#contact" passHref>
+                    <a>Contact</a>
+                  </Link>
+                </StyledLink>
+                <span style={{ alignItems: 'center', cursor: 'pointer', display: 'flex' }} onClick={toggle}>
+                  {theme.theme == 'light' ? <Moon size={20} fill={theme.secondary} /> : <Sun size={20} fill={theme.secondary} />}
+                </span>
+              </div>
+            )}
+          </Content>
+        </Container>
+      </nav>
+      {open &&
+        <Modal>
+          <span style={{ justifyContent: 'flex-end' }} onClick={() => handleMenu()}>
+            <Close space={16} size={20} fill={theme.background} />
+          </span>
+          <StyledLink onClick={() => handleMenu()} mobile>
+            <Link href="/#project" passHref>
+              <a>Project</a>
+            </Link>
+          </StyledLink>
+          <StyledLink onClick={() => handleMenu()} mobile>
+            <Link href="/#skills" passHref>
+              <a>Skills</a>
+            </Link>
+          </StyledLink>
+          <StyledLink onClick={() => handleMenu()} mobile>
+            <Link href="/#contact" passHref>
+              <a>Contact</a>
+            </Link>
+          </StyledLink>
+          <span style={{ marginBottom: 16 }} onClick={toggle}>
+            {theme.theme == 'light' ? <Moon size={16} fill={theme.secondary} /> : <Sun size={20} fill={theme.secondary} />}
+          </span>
+        </Modal>
+      }
+    </>
+  )
+}
 
 export default Navbar
