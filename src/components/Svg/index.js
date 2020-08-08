@@ -60,6 +60,17 @@ const Sun = ({ fill, size }) => (
   </svg>
 )
 
+const Loader = ({ fill, size }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" style="margin: auto; background: none; display: block; shape-rendering: auto;" width="200px" height="200px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" style={{ height: size, width: size }}>
+    <circle cx="50" cy="50" r="32" strokeWidth="2" stroke={fill || "#2f3136"} strokeDasharray="50.26548245743669 50.26548245743669" fill="none" strokeLinecap="round">
+      <animateTransform attributeName="transform" type="rotate" dur="1s" repeatCount="indefinite" keyTimes="0;1" values="0 50 50;360 50 50" />
+    </circle>
+    <circle cx="50" cy="50" r="29" strokeWidth="2" stroke="#9ea4a9" strokeDasharray="45.553093477052 45.553093477052" stroke-dashoffset="45.553093477052" fill="none" strokeLinecap="round">
+      <animateTransform attributeName="transform" type="rotate" dur="1s" repeatCount="indefinite" keyTimes="0;1" values="0 50 50;-360 50 50" />
+    </circle>
+  </svg>
+)
+
 // Skills
 
 const CSS = ({ fill, fillSecondary, size }) => (
@@ -193,6 +204,6 @@ const TypeScript = ({ fill, fillSecondary, size }) => (
 )
 
 export {
-  Menu, Close, Download, Heart, GitHub, GitLab, LinkedIn, WhatsApp, Moon, Sun,
+  Menu, Close, Download, Heart, GitHub, GitLab, LinkedIn, WhatsApp, Moon, Sun, Loader,
   CSS, Discord, ExpressJS, Figma, HTML, JavaScript, Laravel, MySQL, NextJS, NodeJS, PhotoShop, PostgreSQL, ReactJS, Redux, TypeScript
 }

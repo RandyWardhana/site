@@ -13,6 +13,8 @@ import { getProjects, getHeader } from '../utils/FirebaseRequest'
 
 const Index = (props) => {
   const size = useWindowSize()
+  
+
   return (
     <>
       <Navbar currentPosition={'HOME'} size={size} theme={props.theme} toggle={props.toggle} />
@@ -29,10 +31,10 @@ const Index = (props) => {
   )
 }
 
-export async function getStaticProps () {
+export async function getStaticProps() {
   const responseHeader = await getHeader()
   const responseProjects = await getProjects()
-  
+
   return {
     props: {
       responseHeader,
