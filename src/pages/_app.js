@@ -8,6 +8,16 @@ import { useDarkMode } from '../utils/useDarkMode'
 import { lightTheme, darkTheme } from '../utils/Themes'
 
 const Global = createGlobalStyle`
+  ::-moz-selection
+    color: ${({ theme }) => theme.background};
+    background: ${({ theme }) => theme.primary};
+  }
+
+  ::selection {
+    color: ${({ theme }) => theme.background};
+    background: ${({ theme }) => theme.primary};
+  }
+
   body {
     background: ${({ theme }) => theme.background};
     color: ${({ theme }) => theme.secondary};
