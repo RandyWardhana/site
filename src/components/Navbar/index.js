@@ -6,7 +6,7 @@ import { Menu, Sun, Moon, Close } from '../Svg'
 
 const Container = styled.div`
   background: ${({ theme }) => theme.background};
-  box-shadow: 0 2px 4px 0 rgba(136, 138, 142, 0.15);
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.35);
   display: flex;
   position: fixed;
   margin: 0;
