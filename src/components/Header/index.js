@@ -106,10 +106,12 @@ const Header = ({ data, size, theme }) => {
       <FullName size={size}>{data.name}</FullName>
         </Name>
         <Profession>{data.role}</Profession>
-        <DownloadCV size={size} onClick={() => window.open(data.cv)}>
-          <Download fill={theme.primary} />
-          <DownloadText>Download CV</DownloadText>
-        </DownloadCV>
+        {data.show_cv && (
+          <DownloadCV size={size} onClick={() => window.open(data.cv)}>
+            <Download fill={theme.primary} />
+            <DownloadText>Download CV</DownloadText>
+          </DownloadCV>
+        )}
       </ProfileContainer>
       {size.width >= 768 &&
         <ImageContainer>
