@@ -31,7 +31,7 @@ const Index = (props) => {
   )
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const responseHeader = await getHeader()
   const responseProjects = await getProjects()
 
