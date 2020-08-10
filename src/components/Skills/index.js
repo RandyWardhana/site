@@ -55,7 +55,7 @@ const CustomDotItem = styled.li`
 
 const responsive = {
   desktop: {
-    breakpoint: { max: 3000, min: 1024 },
+    breakpoint: { max: 15360, min: 1024 },
     items: 4,
     slidesToSlide: 4
   },
