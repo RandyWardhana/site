@@ -17,7 +17,7 @@ const Index = (props) => {
 
   return (
     <>
-      <Navbar currentPosition={'HOME'} size={size} theme={props.theme} toggle={props.toggle} />
+      <Navbar size={size} theme={props.theme} toggle={props.toggle} />
       <Layout>
         <div style={{ margin: '60px auto 0', padding: size.width <= 768 ? '0 32px' : 0 }}>
           <Header data={props.responseHeader} size={size} theme={props.theme} />
