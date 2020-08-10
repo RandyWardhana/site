@@ -89,7 +89,7 @@ const Modal = styled.div`
   }
 `
 
-const Navbar = ({ currentPosition, size, theme, toggle }) => {
+const Navbar = ({ size, theme, toggle }) => {
   const [open, setOpen] = React.useState(false)
 
   React.useEffect(() => {
@@ -107,7 +107,7 @@ const Navbar = ({ currentPosition, size, theme, toggle }) => {
         <Container>
           <Content>
             <MenuContainer>
-              <StyledLink active={currentPosition === 'HOME'} lastChild={false}>
+              <StyledLink active>
                 <Link href="/" passHref>
                   <a style={{ color: theme.primary, fontWeight: '700' }}>RANDY</a>
                 </Link>
@@ -164,7 +164,7 @@ const Navbar = ({ currentPosition, size, theme, toggle }) => {
             </Link>
           </StyledLink>
           <span style={{ marginBottom: 16 }} onClick={toggle}>
-            {theme.theme == 'light' ? <Moon size={16} fill={theme.secondary} /> : <Sun size={20} fill={theme.secondary} />}
+            {theme.theme == 'light' ? <Moon size={20} fill={theme.secondary} /> : <Sun size={20} fill={theme.secondary} />}
           </span>
         </Modal>
       }
