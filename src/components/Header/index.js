@@ -98,9 +98,7 @@ const Header = ({ data, size, theme }) => {
   return (
     <Container size={size}>
       <ProfileContainer size={size}>
-        {/* <Greeting>{Greetings().id.toUpperCase()}</Greeting> */}
-        <Greeting>{Greetings().en.toUpperCase()}</Greeting>
-        {/* <Greeting>{Greetings().jp.toUpperCase()}</Greeting> */}
+        <Greeting>{Greetings(data.language).greet.toUpperCase()}</Greeting>
         <Name>
           I'm
       <FullName size={size}>{data.name}</FullName>
