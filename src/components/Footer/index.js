@@ -20,6 +20,14 @@ const TitleHeader = styled.p`
   display: flex;
   font-weight: 300;
   transition: ${({ theme }) => theme.transition}; 
+
+  @media(max-width: 375px) {
+    font-size: 14px;
+  }
+
+  @media(max-width: 320px) {
+    font-size: 11.75px;
+  }
 `
 
 const Author = styled.a`
@@ -32,7 +40,7 @@ const Author = styled.a`
 const Footer = ({ size, theme }) => (
   <ContainerHeader size={size}>
     <TitleHeader>
-      Made with&ensp;<Heart fill={theme.primary} />&ensp;by
+      Made with&ensp;<Heart size={size.width <= 375 ? 14 : 24} fill={theme.primary} />&ensp;by
       <Author
         href="https://github.com/RandyWardhana"
         target="_blank"
