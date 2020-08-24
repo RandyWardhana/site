@@ -1,6 +1,16 @@
 import _ from 'lodash'
+import { v4 } from 'uuid'
 
 import firebase from './Firebase'
+
+const getMeta = async () => {
+  try {
+    let snapshot = await firebase.database().ref(`meta/`).once('value')
+    return snapshot.val()
+  } catch (e) {
+    throw e
+  }
+}
 
 const getHeader = async () => {
   try {
@@ -30,7 +40,7 @@ const getProjects = async () => {
 }
 
 const storeImage = async (file) => {
-  let fileName = 'c7aba28b-fce9-4578-8606-0c96a268788f'
+  let fileName = v4()
 
   try {
     let snapshot = await firebase.storage().ref(`/projects/${fileName}`).put(file)
@@ -40,4 +50,4 @@ const storeImage = async (file) => {
   }
 }
 
-export { getHeader, getSkills, getProjects, storeImage }
+export { getMeta, getHeader, getSkills, getProjects, storeImage }
