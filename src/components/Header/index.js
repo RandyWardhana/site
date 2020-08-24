@@ -83,8 +83,7 @@ const ImageContainer = styled.div`
   `
 
 const Img = styled.img`
-  border-bottom-left-radius: 8px;
-  border-bottom-right-radius: 8px;
+  border-radius: 8px;
   height: 100%;
   object-fit: cover;
   width: 100%;
