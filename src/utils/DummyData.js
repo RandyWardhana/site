@@ -1,7 +1,8 @@
-import { 
+import {
   CSS, Discord, ExpressJS, Figma, HTML,
   JavaScript, Laravel, MySQL, NextJS, NodeJS,
-  PhotoShop, PostgreSQL, ReactJS, Redux, TypeScript
+  PhotoShop, PostgreSQL, ReactJS, Redux, TypeScript,
+  StyledComponent
 } from '../components/Svg'
 
 const SkillsData = (fill, fillSecondary) => {
@@ -22,9 +23,13 @@ const SkillsData = (fill, fillSecondary) => {
       icon: <NextJS fill={fill} />,
       caption: 'Next.js'
     },
+    // {
+    //   icon: <Discord fill={fill} />,
+    //   caption: 'Discord.js'
+    // },
     {
-      icon: <Discord fill={fill} />,
-      caption: 'Discord.js'
+      icon: <StyledComponent size={64} fill={fill} />,
+      caption: 'Styled Components'
     },
     {
       icon: <JavaScript fill={fill} fillSecondary={fillSecondary} />,
@@ -38,22 +43,22 @@ const SkillsData = (fill, fillSecondary) => {
       icon: <HTML fill={fill} fillSecondary={fillSecondary} />,
       caption: 'HTML'
     },
-    {
-      icon: <Figma fill={fill} />,
-      caption: 'Figma'
-    },
-    {
-      icon: <PhotoShop fill={fill} fillSecondary={fillSecondary} />,
-      caption: 'Adobe PhotoShop'
-    },
+    // {
+    //   icon: <Figma fill={fill} />,
+    //   caption: 'Figma'
+    // },
+    // {
+    //   icon: <PhotoShop fill={fill} fillSecondary={fillSecondary} />,
+    //   caption: 'Adobe PhotoShop'
+    // },
     {
       icon: <MySQL fill={fill} />,
       caption: 'MySQL'
     },
-    {
-      icon: <PostgreSQL fill={fill} fillSecondary={fillSecondary} />,
-      caption: 'PostgreSQL'
-    },
+    // {
+    //   icon: <PostgreSQL fill={fill} fillSecondary={fillSecondary} />,
+    //   caption: 'PostgreSQL'
+    // },
     {
       icon: <TypeScript fill={fill} fillSecondary={fillSecondary} />,
       caption: 'TypeScript'
